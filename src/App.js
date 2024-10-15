@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import ChatBox from './Components/ChatBox';
+import MessageInput from './Components/MessageInput';
+import { Box } from '@mui/material';
+import { Provider } from 'react-redux';
+import  store from './redux/store';
+import OnlineStatus from './Components/OnlineStatus';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', height: '100vh', padding: 2 }}>
+        <OnlineStatus />
+        <ChatBox />
+        <MessageInput />
+      </Box>
+    </Provider>
   );
 }
 
